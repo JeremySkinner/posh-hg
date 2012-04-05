@@ -240,7 +240,7 @@ function thgCommands($filter) {
   $cmdList | sort 
 }
 
-if(-not (Test-Path Function:\DefaultTabExpansion)) {
+if((Test-Path Function:\TabExpansion) -and (-not (Test-Path Function:\DefaultTabExpansion))) {
    Rename-Item Function:\TabExpansion DefaultTabExpansion
 }
 
