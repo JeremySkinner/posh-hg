@@ -42,6 +42,11 @@ function Write-HgStatus($status = (get-hgStatus $global:PoshHgSettings.GetFileSt
         if($status.Renamed) {
            Write-Host "$($s.RenamedStatusPrefix)$($status.Renamed)" -NoNewline -BackgroundColor $s.RenamedBackgroundColor -ForegroundColor $s.RenamedForegroundColor
         }
+        
+        if($status.Subrepos) {
+           Write-Host "$($s.SubreposStatusPrefix)$($status.Subrepos)" -NoNewline -BackgroundColor $s.SubreposBackgroundColor -ForegroundColor $s.SubreposForegroundColor
+        }
+
 
         if($s.ShowTags -and ($status.Tags.Length -or $status.ActiveBookmark.Length)) {
           write-host $s.BeforeTagText -NoNewLine
