@@ -25,9 +25,14 @@ function isHgDirectory() {
 
 function Get-HasIncoming() {
 	if(isHgDirectory) {
-		$has=true;
-		
+		hg parent | foreach {
+			if($_ -eq "no changes found"){
+					return $false
+				}
+		}
+		return $true
 	}
+	return $false
 }
 
 function Get-HgStatus($getFileStatus=$true, $getBookmarkStatus=$true) {
