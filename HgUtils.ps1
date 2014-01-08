@@ -25,7 +25,8 @@ function isHgDirectory() {
 
 function Get-HasIncoming() {
 	if(isHgDirectory) {
-		hg parent | foreach {
+		hg incoming --insecure | foreach {
+		   
 			if($_ -eq "no changes found"){
 					return $false
 				}
