@@ -23,6 +23,13 @@ function isHgDirectory() {
     return $false
 }
 
+function Get-HasIncoming() {
+	if(isHgDirectory) {
+		$has=true;
+		
+	}
+}
+
 function Get-HgStatus($getFileStatus=$true, $getBookmarkStatus=$true) {
   if(isHgDirectory) {
     $untracked = 0
