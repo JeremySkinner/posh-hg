@@ -24,14 +24,12 @@ function isHgDirectory() {
 }
 
 function Get-HasIncoming() {
-    $has=$false
+    $has=$false;
 	if(isHgDirectory) {
-	    $has=$true;
+	    $has=$true
 		hg incoming --insecure | foreach {
-		   
 			if($_ -match 'no changes found'){
 					$has=$false
-					break
 				}
 		}
 	}
