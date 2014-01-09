@@ -24,17 +24,18 @@ function isHgDirectory() {
 }
 
 function Get-HasIncoming() {
+    $has=$false
 	if(isHgDirectory) {
+	    $has=$true;
 		hg incoming --insecure | foreach {
-		    
+		   
 			if($_ -match 'no changes found'){
-			       
-					return $false
+					$has=$false
+					break
 				}
 		}
-		return $true
 	}
-	return $false
+	return $has;
 }
 
 function Get-HgStatus($getFileStatus=$true, $getBookmarkStatus=$true) {
