@@ -10,7 +10,7 @@ Import-Module .\posh-hg
 
 # Set up a simple prompt, adding the hg prompt parts inside hg repos
 function prompt {
-    Write-Host($pwd) -nonewline
+    Write-Host($pwd.ProviderPath) -nonewline
 
     Write-VcsStatus
       
