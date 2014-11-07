@@ -6,7 +6,10 @@ Push-Location $psScriptRoot
 Pop-Location
 
 Export-ModuleMember -Function @(
+  'Set-VcsStatusSettings',
   'Get-HgStatus',
+  'Write-HgStatus',
+  'Write-VcsStatus',
   'TabExpansion',
   'Get-MqPatches',
   'PopulateHgCommands'

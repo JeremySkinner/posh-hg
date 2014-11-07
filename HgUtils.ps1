@@ -7,7 +7,14 @@ function isHgDirectory() {
     return $true;
   }
   
-  
+  # Support blacklist
+  foreach ($repo in $Global:VcsStatusSettings.RepositoriesInWhichToDisableFileStatus)
+  {
+      if ($Pwd -like "$repo*") {
+          return $false
+      }
+  }
+
   
   # Test within parent dirs
   $checkIn = (Get-Item .).parent
@@ -23,7 +30,8 @@ function isHgDirectory() {
     return $false
 }
 
-function Get-HgStatus($getFileStatus=$true, $getBookmarkStatus=$true) {
+function Get-HgStatus($EnableFileStatus=$true, $getBookmarkStatus=$true) {
+
   if(isHgDirectory) {
     $untracked = 0
     $added = 0
@@ -36,7 +44,7 @@ function Get-HgStatus($getFileStatus=$true, $getBookmarkStatus=$true) {
     $behind = $false
     $multipleHeads = $false
 		
-	if ($getFileStatus -eq $false) {
+	if ($EnableFileStatus -eq $false) {
 		hg parent | foreach {
 		switch -regex ($_) {
 			'tag:\s*(.*)' { $tags = $matches[1].Replace("(empty repository)", "").Split(" ", [StringSplitOptions]::RemoveEmptyEntries) }
