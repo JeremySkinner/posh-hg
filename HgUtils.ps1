@@ -30,6 +30,7 @@ function Get-HgStatus($getFileStatus=$true, $getBookmarkStatus=$true) {
     $modified = 0
     $deleted = 0
     $missing = 0
+    $subrepos = 0
 	$renamed = 0
     $tags = @()
     $commit = ""
@@ -74,6 +75,7 @@ function Get-HgStatus($getFileStatus=$true, $getBookmarkStatus=$true) {
 				  '(\d+) deleted' { $missing = $matches[1] }
 				  '(\d+) unknown' { $untracked = $matches[1] }
 				  '(\d+) renamed' { $renamed = $matches[1] }
+				  '(\d+) subrepos' { $subrepos = $matches[1] }
 				}
 			  } 
 			} 
@@ -103,7 +105,8 @@ function Get-HgStatus($getFileStatus=$true, $getBookmarkStatus=$true) {
                "Behind" = $behind;
                "MultipleHeads" = $multipleHeads;
                "ActiveBookmark" = $active;
-               "Branch" = $branch}
+               "Branch" = $branch;
+               "Subrepos" = $subrepos}
    }
 }
 

@@ -26,7 +26,9 @@ $global:PoshHgSettings = New-Object PSObject -Property @{
     # Working directory status
     AddedForegroundColor      = [ConsoleColor]::Green
     AddedBackgroundColor      = $Host.UI.RawUI.BackgroundColor
-	ModifiedForegroundColor   = [ConsoleColor]::Blue
+	SubreposForegroundColor   = [ConsoleColor]::Blue
+    SubreposBackgroundColor   = $Host.UI.RawUI.BackgroundColor
+  ModifiedForegroundColor   = [ConsoleColor]::Blue
     ModifiedBackgroundColor   = $Host.UI.RawUI.BackgroundColor
 	DeletedForegroundColor    = [ConsoleColor]::Red
     DeletedBackgroundColor    = $Host.UI.RawUI.BackgroundColor
@@ -62,4 +64,5 @@ $global:PoshHgSettings = New-Object PSObject -Property @{
     UntrackedStatusPrefix         = ' ?'
     MissingStatusPrefix           = ' !'
     RenamedStatusPrefix           = ' ^'
+    SubreposStatusPrefix          = ' subrepos~'
 }
