@@ -114,7 +114,28 @@ function Write-HgStatus($status = (get-hgStatus $global:PoshHgSettings.GetFileSt
 if(!(Test-Path Variable:Global:VcsPromptStatuses)) {
      $Global:VcsPromptStatuses = @()
  }
-function Global:Write-VcsStatus { $Global:VcsPromptStatuses | foreach { & $_ } }
+
+function Global:Write-VcsStatus {
+    $Global:VcsPromptStatuses | foreach {
+        $vcsPromptErrors = $null
+        try {
+            Invoke-Command -ScriptBlock $_ -ErrorVariable vcsPromptErrors 2>$null
+        }
+        catch {
+            $vcsPromptErrors = $_
+        }
+        if ($vcsPromptErrors.Length -gt 0) {
+             # Log the errors but dont affect the users prompt, splat error objects into Write-Error
+            $vcsPromptErrors | % { Write-Error -ErrorAction SilentlyContinue @_ }
+            $s = $Global:PoshHgSettings
+            if ($s) {
+                Write-Prompt $s.BeforeText -BackgroundColor $s.BeforeBackgroundColor -ForegroundColor $s.BeforeForegroundColor
+                Write-Prompt "Error" -BackgroundColor $s.ErrorBackgroundColor -ForegroundColor $s.ErrorForegroundColor
+                Write-Prompt $s.AfterText -BackgroundColor $s.AfterBackgroundColor -ForegroundColor $s.AfterForegroundColor
+            }
+    }
+}
++}
 
 # Add scriptblock that will execute for Write-VcsStatus
 $Global:VcsPromptStatuses += {
