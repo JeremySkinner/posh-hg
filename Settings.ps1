@@ -52,8 +52,12 @@ $global:PoshHgSettings = New-Object PSObject -Property @{
     UnappliedPatchBackgroundColor = $Host.UI.RawUI.BackgroundColor
     AppliedPatchForegroundColor   = [ConsoleColor]::DarkYellow
     AppliedPatchBackgroundColor   = $Host.UI.RawUI.BackgroundColor
-    PatchSeparator                = ' › '
+    PatchSeparator                = ' â€º '
     PatchSeparatorColor           = [ConsoleColor]::White    
+ 
+    # Error customisation   
+    ErrorForegroundColor      = [ConsoleColor]::Red
+    ErrorBackgroundColor      = $Host.UI.RawUI.BackgroundColor
 
     # Current revision
     ShowRevision                = $true
