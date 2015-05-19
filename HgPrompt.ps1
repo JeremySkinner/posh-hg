@@ -133,9 +133,9 @@ function Global:Write-VcsStatus {
                 Write-Prompt "Error" -BackgroundColor $s.ErrorBackgroundColor -ForegroundColor $s.ErrorForegroundColor
                 Write-Prompt $s.AfterText -BackgroundColor $s.AfterBackgroundColor -ForegroundColor $s.AfterForegroundColor
             }
+        }
     }
 }
-+}
 
 # Add scriptblock that will execute for Write-VcsStatus
 $Global:VcsPromptStatuses += {
