@@ -1,15 +1,15 @@
 $global:PoshHgSettings = New-Object PSObject -Property @{
-    #Retreival settings
+    #Retrieval settings
     GetFileStatus             = $true
     GetBookmarkStatus         = $true
 	
     #Before prompt
-    BeforeText                = ' ['
+    BeforeText                = ' [ '
     BeforeForegroundColor     = [ConsoleColor]::Yellow
     BeforeBackgroundColor     = $Host.UI.RawUI.BackgroundColor
     
     #After prompt
-    AfterText                 = ']'
+    AfterText                 = ' ]'
     AfterForegroundColor      = [ConsoleColor]::Yellow
     AfterBackgroundColor      = $Host.UI.RawUI.BackgroundColor
     
@@ -52,7 +52,7 @@ $global:PoshHgSettings = New-Object PSObject -Property @{
     UnappliedPatchBackgroundColor = $Host.UI.RawUI.BackgroundColor
     AppliedPatchForegroundColor   = [ConsoleColor]::DarkYellow
     AppliedPatchBackgroundColor   = $Host.UI.RawUI.BackgroundColor
-    PatchSeparator                = ' › '
+    PatchSeparator                = ' â€º '
     PatchSeparatorColor           = [ConsoleColor]::White    
 
     # Current revision
