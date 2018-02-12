@@ -125,9 +125,13 @@ function hgCommands($filter) {
 # Invoke PopulateHgCommands in your profile if you don't want the initial hit. 
 function PopulateHgCommands() {
    $hgCommands = foreach($cmd in (hg help)) {
-    # Stop once we reach the "Enabled Extensions" section of help. 
-    # Not sure if there's a better way to do this...
+    # Enable shelve
     if($cmd -eq "enabled extensions:") {
+      continue
+    }
+    # Stop once after reaching the "Enabled Extensions" section of help. 
+    # Not sure if there's a better way to do this...
+    if($cmd -eq "additional help topics:") {
       break
     }
     
