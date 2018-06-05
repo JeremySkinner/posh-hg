@@ -117,6 +117,8 @@ if(!(Test-Path Variable:Global:VcsPromptStatuses)) {
 function Global:Write-VcsStatus { $Global:VcsPromptStatuses | foreach { & $_ } }
 
 # Add scriptblock that will execute for Write-VcsStatus
-$Global:VcsPromptStatuses += {
+$PoshHgVcsPrompt = {
     Write-HgStatus
 }
+$Global:VcsPromptStatuses += $PoshHgVcsPrompt
+$ExecutionContext.SessionState.Module.OnRemove = { $Global:VcsPromptStatuses = $Global:VcsPromptStatuses | ? { $_ -ne $PoshHgVcsPrompt } }
