@@ -23,6 +23,19 @@ function isHgDirectory() {
     return $false
 }
 
+function Get-HasIncoming() {
+    $has=$false;
+	if(isHgDirectory) {
+	    $has=$true
+		hg incoming --insecure | foreach {
+			if($_ -match 'no changes found'){
+					$has=$false
+				}
+		}
+	}
+	return $has;
+}
+
 function Get-HgStatus($getFileStatus=$true, $getBookmarkStatus=$true) {
   if(isHgDirectory) {
     $untracked = 0

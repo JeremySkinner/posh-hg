@@ -6,6 +6,7 @@ Push-Location $psScriptRoot
 Pop-Location
 
 Export-ModuleMember -Function @(
+  'Get-HasIncoming',
   'Get-HgStatus',
   'TabExpansion',
   'Get-MqPatches',
