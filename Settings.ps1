@@ -47,7 +47,7 @@ $global:PoshHgSettings = New-Object PSObject -Property @{
     
     # MQ Integration
     ShowPatches                   = $true
-    BeforePatchText               = 'p:'
+    BeforePatchText               = ':'
     UnappliedPatchForegroundColor = [ConsoleColor]::DarkGray
     UnappliedPatchBackgroundColor = $Host.UI.RawUI.BackgroundColor
     AppliedPatchForegroundColor   = [ConsoleColor]::DarkYellow
