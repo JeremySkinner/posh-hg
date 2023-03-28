@@ -46,13 +46,13 @@ $global:PoshHgSettings = New-Object PSObject -Property @{
     TagSeparatorColor         = [ConsoleColor]::White
     
     # MQ Integration
-    ShowPatches                   = $false
-    BeforePatchText               = ' patches: '
+    ShowPatches                   = $true
+    BeforePatchText               = ':'
     UnappliedPatchForegroundColor = [ConsoleColor]::DarkGray
     UnappliedPatchBackgroundColor = $Host.UI.RawUI.BackgroundColor
     AppliedPatchForegroundColor   = [ConsoleColor]::DarkYellow
     AppliedPatchBackgroundColor   = $Host.UI.RawUI.BackgroundColor
-    PatchSeparator                = ' › '
+    PatchSeparator                = '|'
     PatchSeparatorColor           = [ConsoleColor]::White    
 
     # Current revision
