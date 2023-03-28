@@ -73,7 +73,7 @@ function Write-HgStatus($status = (get-hgStatus $global:PoshHgSettings.GetFileSt
               $tagCounter++;
           }        
         }
-        
+       
         if($s.ShowPatches) {
           $patches = Get-MqPatches
           if($patches.All.Length) {
@@ -88,14 +88,14 @@ function Write-HgStatus($status = (get-hgStatus $global:PoshHgSettings.GetFileSt
               }
               $patchCounter++;
             }
-            
+            <#
             $patches.Unapplied | % {
                Write-Prompt $_ -ForegroundColor $s.UnappliedPatchForegroundColor -BackgroundColor $s.UnappliedPatchBackgroundColor
                if($patchCounter -lt ($patches.All.Length -1)) {
                   Write-Prompt $s.PatchSeparator -ForegroundColor $s.PatchSeparatorColor
                }
                $patchCounter++;
-            }
+            }#>
           }
         }
 
